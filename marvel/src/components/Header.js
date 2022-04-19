@@ -5,7 +5,7 @@ function Header() {
     return (
         <header>
             <div className={style.marvel}>
-                <img src="./image2.png" alt="logo" />
+                <img src="image2.png" alt="logo" />
             </div>
         </header>
     );
