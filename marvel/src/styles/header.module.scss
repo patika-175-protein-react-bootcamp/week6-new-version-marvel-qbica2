@@ -1,0 +1,23 @@
+header{
+    width: 100%;
+    height: 100vh;
+    background-image: url(../constants/images/image1.png);
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    .marvel{
+        width: 33%;
+        height: 290px;
+        position: relative;
+        top: 90px;
+        display: flex;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+}

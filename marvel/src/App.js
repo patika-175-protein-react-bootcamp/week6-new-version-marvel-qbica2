@@ -1,10 +1,12 @@
 import React from "react";
-import "./App.css";
+import Rooter from "./rooter/rooter";
+import Layout from "./components/Layout";
 
 function App() {
     return (
-        <div className="App">
-        </div>
+        <Layout>
+            <Rooter />
+        </Layout >
     );
 }
 
