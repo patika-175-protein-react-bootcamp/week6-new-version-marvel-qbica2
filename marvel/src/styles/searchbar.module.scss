@@ -1,0 +1,21 @@
+.searchBar{
+    height: 100%;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    label{
+        color: #ffffff;
+        margin-bottom: 10px;
+    }
+    input[type="search"]{
+        padding-left:26px;
+        width: 609px;
+        height: 63px;
+        border: 1px solid #F4F4F4;
+        background-color:  #222222;
+        color: #FFFFFF99;
+    }
+}
