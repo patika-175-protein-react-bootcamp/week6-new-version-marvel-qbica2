@@ -7,7 +7,7 @@ const CharacterContext = createContext();
 export const CharacterProvider = ({ children }) => {
 
     const [characterList, setCharacterList] = useState([]);
-    const [page,setPage] = useState(sessionStorage.getItem("currentPage") || 1);
+    const [page,setPage] = useState(Number(sessionStorage.getItem("currentPage")) || 1);
     const [totalPages,setTotalPages] = useState(sessionStorage.getItem("totalPages") || 10);
 
 
@@ -26,13 +26,27 @@ export const CharacterProvider = ({ children }) => {
             }
         };
         getData();
+        sessionStorage.setItem("currentPage", page);
     }, [page]);
+
+    const handlePageChange = (value) => {
+        if(value.type === "prev"){
+            setPage(x=>x-1);
+        }else if(value.type === "next"){
+            
+            setPage(x=>x+1);
+        }else{
+            setPage(value.number);
+        }
+    };
+
 
     const values={
         characterList,
         setPage,
         page,
         totalPages,
+        handlePageChange
     };
 
     return (

@@ -1,19 +1,76 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import style from "../styles/pagination.module.scss";
+import CharacterContext from "../contexts/CharacterContext";
 
 function Pagination() {
+
+    const { page, totalPages, handlePageChange } = useContext(CharacterContext);
+    const [pageList, setPageList] = useState([]);
+
+    useEffect(() => {
+
+        let list = [];
+        let firstItem;
+        let lastItem;
+        let addLast = ["...", totalPages];
+        let addFirst = [1,"..."];
+
+        if (totalPages <= 7) {
+            for (let i = 1; i <= totalPages; i++) {
+                list.push(i);
+            }
+        } else {
+            if(page <=4){
+                firstItem = 1;
+                if(page<4){
+                    lastItem = 4;
+                }else{
+                    lastItem = 5;
+                }
+            }else if(page >= totalPages - 3){
+                if(page > totalPages - 3) {
+                    firstItem = totalPages - 3;
+                }else{
+                    firstItem = page - 1;
+                }
+                lastItem = totalPages;
+            }else{
+                firstItem = page - 1;
+                lastItem = page + 1;
+            }
+            for (let i = firstItem; i <= lastItem; i++) {
+                list.push(i);
+            }
+
+            if(page <=4){
+                list = [...list, ...addLast];
+            }else if(page >= totalPages - 3){
+                list = [...addFirst, ...list];
+            }else{
+                list = [...addFirst, ...list, ...addLast];
+            }
+            
+        }
+
+        setPageList([...list]);
+
+    }, [page, totalPages]);
+
+
     return (
         <footer>
             <div className={style.pagination}>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
-                <button>...</button>
-                <button>9</button>
-                <button>10</button>
-                <button></button>
+                {
+                    page!=1 && (<button onClick={()=>handlePageChange({type:"prev"})} ><i className="fa-solid fa-xl fa-angle-left"></i></button>)
+                }
+                {
+                    pageList.map((item,i) => (
+                        <button onClick={()=>handlePageChange({number:item})} key={i} value={item}>{item}</button>
+                    ))
+                }
+                {
+                    page!=totalPages && (<button onClick={()=>handlePageChange({type:"next"})} ><i className="fa-solid fa-xl fa-angle-right"></i></button>)
+                }
             </div>
         </footer>
     );
