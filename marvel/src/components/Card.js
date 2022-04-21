@@ -1,11 +1,12 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import style from "../styles/card.module.scss";
 
-function Card() {
+function Card( { name, src } ) {
     return (
         <div className={style.card}>
-            <img  src="" alt="" />
-            <div className={style.title}></div>
+            <img  src={src} alt={name} />
+            <div className={style.title}>{name}</div>
         </div>
     );
 }
