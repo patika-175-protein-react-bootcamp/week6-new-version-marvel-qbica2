@@ -9,6 +9,7 @@ export const CharacterProvider = ({ children }) => {
     const [characterList, setCharacterList] = useState([]);
     const [page,setPage] = useState(Number(sessionStorage.getItem("currentPage")) || 1);
     const [totalPages,setTotalPages] = useState(sessionStorage.getItem("totalPages") || 10);
+    const [pageLoading,setPageLoading] = useState(false);
 
 
     useEffect(() => {
@@ -18,15 +19,19 @@ export const CharacterProvider = ({ children }) => {
                 setCharacterList(JSON.parse(fetchedPages));
                 setTotalPages(sessionStorage.getItem("totalPages"));
             }else{
+                setPageLoading(true);
                 const response = await getCharactersByPageNumber(page);
                 setCharacterList(response.results);
                 setTotalPages(Math.ceil(response.total/20));
                 sessionStorage.setItem(`page:${page}`,JSON.stringify(response.results));
                 sessionStorage.setItem("totalPages",Math.ceil(response.total/20));
             }
+            setPageLoading(false);
         };
         getData();
         sessionStorage.setItem("currentPage", page);
+        window.scrollTo(0, 700);
+
     }, [page]);
 
     const handlePageChange = (value) => {
@@ -46,7 +51,8 @@ export const CharacterProvider = ({ children }) => {
         setPage,
         page,
         totalPages,
-        handlePageChange
+        handlePageChange,
+        pageLoading
     };
 
     return (
