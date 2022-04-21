@@ -21,6 +21,15 @@ footer{
             letter-spacing:0.15px;
             text-align: center;
             user-select: none; 
+            &:hover{
+                    background-color:#7E7E7E ;
+                    color:#222222;
+                    cursor: pointer;
+            }
           }
     }
 }
+.active{
+    background-color:#7E7E7E !important;
+    color:#222222 !important;
+  }

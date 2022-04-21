@@ -65,7 +65,7 @@ function Pagination() {
                 }
                 {
                     pageList.map((item,i) => (
-                        <button onClick={()=>handlePageChange({number:item})} key={i} value={item}>{item}</button>
+                        <button className={`${page===item && style.active}`} onClick={()=>handlePageChange({number:item})} key={i} value={item}>{item}</button>
                     ))
                 }
                 {
