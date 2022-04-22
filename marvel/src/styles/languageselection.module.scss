@@ -13,8 +13,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        background: #7E7E7E;
+        cursor: pointer;
     }
 }
 .active{
-    background: #7E7E7E;
+    background: #EDEDED !important;
 }

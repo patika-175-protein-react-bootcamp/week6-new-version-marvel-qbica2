@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { createContext, useState, useEffect } from "react";
-import {getCharactersByPageNumber, searchCharacters } from "../services/charactersService";
+import {getCharactersByPageNumber, searchCharacters, getCharactersByID } from "../services/charactersService";
 
 const CharacterContext = createContext();
 
@@ -12,6 +12,9 @@ export const CharacterProvider = ({ children }) => {
     const [pageLoading,setPageLoading] = useState(false);
     const [searchText,setSearchText] = useState("");
     const [searchList,setSearchList] = useState([]);
+    const [detail,setDetail] = useState(JSON.parse(sessionStorage.getItem(`detail:${sessionStorage.getItem("currentDetail")}`)) ||{});
+    const [detailLoading,setDetailLoading] = useState(false);
+
 
 
     useEffect(() => {
@@ -59,6 +62,21 @@ export const CharacterProvider = ({ children }) => {
         }
     };
 
+    const getDetail= async (id) =>{
+        const characterDetail = sessionStorage.getItem(`detail:${id}`);
+        if(characterDetail){
+            setDetail(JSON.parse(characterDetail));
+        }else{
+            setDetailLoading(true);
+            const res = await getCharactersByID(id);
+            setDetail(res.results[0]);
+            sessionStorage.setItem(`detail:${id}`,JSON.stringify(res.results[0]));
+           
+            setDetailLoading(false);
+        }
+        sessionStorage.setItem("currentDetail", id);
+    };
+
 
     const values={
         characterList,
@@ -69,7 +87,10 @@ export const CharacterProvider = ({ children }) => {
         pageLoading,
         searchText,
         setSearchText,
-        searchList
+        searchList,
+        getDetail,
+        detail,
+        detailLoading
     };
 
     return (
