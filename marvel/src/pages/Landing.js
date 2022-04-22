@@ -9,14 +9,13 @@ function Landing() {
     return (
         <>
             {
-                pageLoading ? <Loading /> : 
-                    (<>
+                pageLoading ? <Loading /> : (
+                    <>
                         <CardList />
                         <Pagination />
-                    </>)
+                    </>
+                )
             }
-            {/* <CardList />
-            <Pagination /> */}
         </>
     );
 }

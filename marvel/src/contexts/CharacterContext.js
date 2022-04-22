@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { createContext, useState, useEffect } from "react";
-import {getCharactersByPageNumber} from "../services/charactersService";
+import {getCharactersByPageNumber, searchCharacters } from "../services/charactersService";
 
 const CharacterContext = createContext();
 
@@ -10,6 +10,8 @@ export const CharacterProvider = ({ children }) => {
     const [page,setPage] = useState(Number(sessionStorage.getItem("currentPage")) || 1);
     const [totalPages,setTotalPages] = useState(sessionStorage.getItem("totalPages") || 10);
     const [pageLoading,setPageLoading] = useState(false);
+    const [searchText,setSearchText] = useState("");
+    const [searchList,setSearchList] = useState([]);
 
 
     useEffect(() => {
@@ -34,6 +36,18 @@ export const CharacterProvider = ({ children }) => {
 
     }, [page]);
 
+    useEffect(() => {
+        const search = async () => {
+            if(searchText.length > 0){
+                const res = await searchCharacters(searchText);
+                setSearchList(res.results);
+            }else{
+                setSearchList([]);
+            }
+        };
+        search();
+    },[searchText]);
+
     const handlePageChange = (value) => {
         if(value.type === "prev"){
             setPage(x=>x-1);
@@ -52,7 +66,10 @@ export const CharacterProvider = ({ children }) => {
         page,
         totalPages,
         handlePageChange,
-        pageLoading
+        pageLoading,
+        searchText,
+        setSearchText,
+        searchList
     };
 
     return (

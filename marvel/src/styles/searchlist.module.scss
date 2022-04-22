@@ -1,0 +1,21 @@
+.searchList{
+    width: 1200px;
+    display: flex;
+    justify-content: flex-start;
+    .list{
+        margin-top: 10px;
+        width: 609px;
+        background-color: #434343;
+        align-self: flex-start;
+        display: flex;
+        flex-direction: column;
+        span{
+            padding-left: 20px;
+            margin: 5px 0;
+            cursor: pointer;
+            &:hover{
+                color: #fff;
+            }
+        }
+    }
+}
