@@ -1,21 +1,31 @@
 .searchList{
     width: 1200px;
+    height: 0;
     display: flex;
     justify-content: flex-start;
     .list{
-        margin-top: 10px;
+        margin-top: 5px;
         width: 609px;
         background-color: #434343;
         align-self: flex-start;
         display: flex;
         flex-direction: column;
+        z-index: 1;
         span{
-            padding-left: 20px;
-            margin: 5px 0;
+            font-size: 18px;
+            line-height:21px;
+            padding-left: 26px;
+            margin: 10px 0;
+            color: #FFF;
             cursor: pointer;
+            transition: all 0.4s ease-in-out;
             &:hover{
-                color: #fff;
+                background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                transform: translateX(10px);
             }
         }
     }
 }
+
