@@ -1,0 +1,13 @@
+{
+    "search": {
+        "label": "Rechercher Des Personnages",
+        "placeholder": "Tapez le caractère que vous souhaitez rechercher"
+    },
+    "searchList":{
+        "name": "Le Nom Du Personnage"
+    },
+    "detail":{
+        "comics": "Des Bandes Dessinées",
+        "home": "Page D'accueil"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "search": {
+        "label": "Karakter Ara",
+        "placeholder": "Aramak istediğiniz karakteri yazınız"
+    },
+    "searchList":{
+        "name": "Karakter Adı"
+    },
+    "detail":{
+        "comics": "Çizgi Romanları",
+        "home": "Ana Sayfa"
+    }
+}

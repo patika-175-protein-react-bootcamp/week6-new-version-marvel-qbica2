@@ -3,6 +3,7 @@ import style from "../styles/searchlist.module.scss";
 import CharacterContext from "../contexts/CharacterContext";
 import useOutsideClick from "../hooks/useOutsideClick";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 
 function SearchList() {
@@ -10,6 +11,7 @@ function SearchList() {
     const [list, setList] = useState([]);
     const listRef = useRef();
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     useEffect(() => {
         setList(searchList.slice(0,5));
@@ -30,7 +32,7 @@ function SearchList() {
                 {
                     list.map(item => (
                         <span onClick={()=>handleClick(item.id)} key={item.id}>
-                        Karakter Adı : {item.name}
+                            {t("searchList.name")} : {item.name}
                         </span>
                     ))
                 }

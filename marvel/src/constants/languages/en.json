@@ -1,0 +1,13 @@
+{
+    "search": {
+        "label": "Search For Character",
+        "placeholder": "Type the character you want to search"
+    },
+    "searchList":{
+        "name": "Character Name"
+    },
+    "detail":{
+        "comics": "Comics",
+        "home": "Home"
+    }
+}

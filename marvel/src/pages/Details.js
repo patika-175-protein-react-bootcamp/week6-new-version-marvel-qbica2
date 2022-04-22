@@ -2,7 +2,8 @@ import React, {useContext, useState, useEffect} from "react";
 import CharacterContext from "../contexts/CharacterContext";
 import Loading from "../components/Loading";
 import style from "../styles/details.module.scss";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Details() {
     const {detail, detailLoading} = useContext(CharacterContext);
@@ -11,7 +12,7 @@ function Details() {
     const numberInParenthesis = /^.*?\([^\d]*(\d+)[^\d]*\).*$/;
 
     const navigate = useNavigate();
-
+    const { t } = useTranslation();
     useEffect(() => { 
         if(!detailLoading) {
             setList(detail.comics.items.slice(0,10));
@@ -42,16 +43,15 @@ function Details() {
                             <div className={style.right}>
                                 <div className={style.title}>{detail.name}</div>
                                 <div className={style.description}>{detail.description}</div>
-                                <span>Series</span>
+                                <span>{t("detail.comics")}</span>
                                 {
                                     sortedList.map((item) => (
                                         <div className={style.item} key={item.name}>
                                             {item.name}
                                         </div>
                                     ))
-
                                 }
-                                <button onClick={()=>navigate("/")}>Home</button>
+                                <button onClick={()=>navigate("/")}>{t("detail.home")}</button>
                             </div>
                         </div>
                     </div>
