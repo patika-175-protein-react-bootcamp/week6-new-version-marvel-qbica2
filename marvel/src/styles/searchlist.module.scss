@@ -29,3 +29,22 @@
     }
 }
 
+@media screen and (max-width: 1300px) {
+    .searchList{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .searchList{
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 680px) {
+    .searchList{
+        width: 90%;
+        .list{
+            width: 90%;
+        }
+    }
+}
