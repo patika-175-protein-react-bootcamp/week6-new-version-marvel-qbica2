@@ -19,3 +19,18 @@
         color: #FFFFFF99;
     }
 }
+
+@media screen and (max-width: 950px) {
+    .searchBar{
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .searchBar{
+        width: 100%;
+        input[type="search"]{
+            width: 90%;
+        }
+    }
+}

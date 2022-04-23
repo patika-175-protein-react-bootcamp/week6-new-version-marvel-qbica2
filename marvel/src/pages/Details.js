@@ -23,7 +23,6 @@ function Details() {
         if(list.length > 0) {
             setSortedList(list.sort((a,b) => {
                 const aNumber = a.name.match(numberInParenthesis);
-               
                 const bNumber = b.name.match(numberInParenthesis);
                 if(aNumber && bNumber) {
                     return parseInt(aNumber[1]) - parseInt(bNumber[1]);
